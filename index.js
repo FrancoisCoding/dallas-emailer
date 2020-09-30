@@ -27,14 +27,21 @@ var transporter = nodemailer.createTransport({
 console.log();
 
 app.listen(port, () => console.log("listening on port " + port));
-
+// info@quadruplejcapital.com
 app.post("/", (req, res) => {
-  var mailOptions = {
-    from: process.env.USER,
-    to: "info@quadruplejcapital.com",
-    subject: "Quadruple J Capital Contact",
-    text: `Hi, my name is ${req.body.first_name} ${req.body.last_name}. Please reach out to me with additional information. My email address is ${req.body.email} and my phone number is ${req.body.phone}`,
-  };
+  req.body.entity
+    ? (mailOptions = {
+        from: process.env.USER,
+        to: "francoisisaiaht@yahoo.com",
+        subject: "Quadruple J Capital Contact",
+        text: `Hi, my name is ${req.body.first_name} ${req.body.last_name}. Please reach out to me with additional information. My email address is ${req.body.email} and my phone number is ${req.body.phone}. My entity is ${req.body.entity}.`,
+      })
+    : (mailOptions = {
+        from: process.env.USER,
+        to: "francoisisaiaht@yahoo.com",
+        subject: "Quadruple J Capital Contact",
+        text: `Hi, my name is ${req.body.first_name} ${req.body.last_name}. Please reach out to me with additional information. My email address is ${req.body.email} and my phone number is ${req.body.phone}.`,
+      });
   transporter.sendMail(mailOptions, function (error, info) {
     if (error) {
       console.log(error);
