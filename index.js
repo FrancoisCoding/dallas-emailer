@@ -36,13 +36,13 @@ app.post("/", (req, res) => {
   req.body.entity
     ? (mailOptions = {
         from: process.env.USER,
-        to: "francoisisaiaht@yahoo.com",
+        to: "dallasisominspections@gmail.com",
         subject: "True Inspections Contact",
         text: `Hi, my name is ${req.body.first_name} ${req.body.last_name}. Please reach out to me with additional information. My email address is ${req.body.email} and my phone number is ${req.body.phone}. Type of inspection is ${req.body.entity}.`,
       })
     : (mailOptions = {
         from: process.env.USER,
-        to: "francoisisaiaht@yahoo.com",
+        to: "dallasisominspections@gmail.com",
         subject: "True Inspections Contact",
         text: `Hi, my name is ${req.body.first_name} ${req.body.last_name}. Please reach out to me with additional information. My email address is ${req.body.email} and my phone number is ${req.body.phone}.`,
       });
