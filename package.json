@@ -17,6 +17,7 @@
     "mailgun-js": "^0.22.0",
     "node-mailjet": "^3.3.1",
     "nodemailer": "^6.4.12",
+    "nodemailer-smtp-transport": "^2.7.4",
     "nodemon": "^2.0.4"
   }
 }

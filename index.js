@@ -4,6 +4,7 @@ dotenv.config();
 const cors = require("cors");
 const bodyParser = require("body-parser");
 var nodemailer = require("nodemailer");
+var smtpTransport = require("nodemailer-smtp-transport");
 
 const app = express();
 app.use(cors());
@@ -19,17 +20,16 @@ app.options("/", function (req, res) {
 
 const port = process.env.PORT || 5000;
 
-var transporter = nodemailer.createTransport({
-  service: "gmail",
-  host: "smtp.gmail.com",
-  port: 587,
-  secure: false,
-  requireTLS: true,
-  auth: {
-    user: "workemailsender@gmail.com",
-    pass: "lizardman22190",
-  },
-});
+var transporter = nodemailer.createTransport(
+  smtpTransport({
+    service: "gmail",
+    host: "smtp.gmail.com",
+    auth: {
+      user: process.env.USER,
+      pass: process.env.PASS,
+    },
+  })
+);
 
 app.listen(port, () => console.log("listening on port " + port));
 app.post("/", (req, res) => {
